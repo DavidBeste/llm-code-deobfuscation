@@ -1,8 +1,8 @@
 # Exploring the Potential of LLMs for Code Deobfuscation
 
-## Instructions to reproduce:
+## Instructions to reproduce
 
-### Single Transformations:
+### Single Transformations
 
 1. Create the training dataset
 2. Fine-tune the model
@@ -57,6 +57,8 @@
 4. Evaluate correctness and compute the metrics
 5. Show the evaluation
 6. Manually check for memorized constants (We only need the correctness part of the evaluation here since we only have to examine semantically incorrect samples and don't need the deobfuscation performance)
+
+#### Example: 
 
 1. ```python3 build_memorization_dataset.py --input_dataset ../FineTuning-6144-eval/datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --output_dataset _gpt-4-32k-0314-memorization --original_path ../FineTuning-6144-eval/datasets/original --obfuscated_path ../FineTuning-6144-eval/datasets/obfuscated --deobfuscated_path ../FineTuning-6144-eval/datasets/deobfuscated --data_suffix _encode_arithmetic_gpt-4-32k-0314,_encode_branches_gpt-4-32k-0314,_flatten_gpt-4-32k-0314,_opaque_gpt-4-32k-0314,_randomize_arguments_gpt-4-32k-0314```
 2. ```python3 llm.py --model_type openai --eval_model ../FineTuning-6144-eval/models/codellama-7b-encode_arithmetic-6144/ --eval_out_path MemTest/deobfuscated_modified --eval_file obfuscation_dataset_gpt-4-32k-0314-memorization_encode_arithmetic.json --max_tokens 6144 --data_suffix _encode_arithmetic_gpt-4-32k-0314```
