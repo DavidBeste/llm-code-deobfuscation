@@ -24,8 +24,7 @@
 5. ```python3 llm.py --model_type deepseek-coder-instruct --eval_model models/deepseek-coder-instruct-7b-encode_arithmetic/ --eval_out_path datasets/deobfuscated --eval_file datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --max_tokens 6144 --data_suffix _encode_arithmetic```
 6. ```python3 llvm.py --eval_file datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --obfs_data_suffix _encode_arithmetic --data_suffix _encode_arithmetic```
 7. ```python3 eval_deobf.py --eval_dataset_path datasets/obfuscation_dataset_encode_arithmetic_eval.json --original_path datasets/original --obfuscated_path datasets/obfuscated --deobfuscated_path datasets/deobfuscated_encode_arithmetic --data_suffix encode_arithmetic --io_path datasets/input_samples```
-8. ```python3 llvm.py --eval_file datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --obfs_data_suffix _encode_arithmetic --data_suffix _encode_arithmetic```
-9. ```python3 show_eval.py --eval_dataset_path datasets/obfuscation_dataset_encode_arithmetic_eval.json --data_suffix _encode_arithmetic --original_path datasets/original --obfuscated_path datasets/obfuscated --deobfuscated_path datasets/deobfuscated```
+8. ```python3 show_eval.py --eval_dataset_path datasets/obfuscation_dataset_encode_arithmetic_eval.json --data_suffix _encode_arithmetic --original_path datasets/original --obfuscated_path datasets/obfuscated --deobfuscated_path datasets/deobfuscated```
 
 ### Chained Transformations
 
