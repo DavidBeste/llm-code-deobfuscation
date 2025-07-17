@@ -19,7 +19,7 @@
 #### Example:
 1. ```python3 create_training_data_single.py --tokenizer deepseek-ai/deepseek-coder-6.7b-instruct --max_tokens 6144 --number_of_samples 3000```
 2. ```python3 llm.py --model_type deepseek-coder-instruct --train_model deepseek-ai/deepseek-coder-6.7b-instruct --train_file datasets/obfuscation_dataset_encode_arithmetic_6144.txt --trained_model_path models/deepseek-coder-instruct-7b-encode_arithmetic --max_tokens 6144```
-3. ```mkdir ../eval/models; cp -r models/deepseek-coder-instruct-7b-encode_arithmetic ../eval/models/deepseek-coder-instruct-7b-encode_arithmetic; cd ../eval; mkdir datasets # It is important to set two different directories for training and eval data to prevent source files from being overwritten!```
+3. ```mkdir ../eval/models ../eval/datasets; cp -r models/deepseek-coder-instruct-7b-encode_arithmetic ../eval/models/deepseek-coder-instruct-7b-encode_arithmetic; cd ../eval # It is important to set two different directories for training and eval data to prevent source files from being overwritten!```
 4. ```python3 create_eval_data_single.py --tokenizer deepseek-ai/deepseek-coder-6.7b-instruct --max_tokens 6144 --number_of_samples 200```
 5. ```python3 llm.py --model_type deepseek-coder-instruct --eval_model models/deepseek-coder-instruct-7b-encode_arithmetic/ --eval_out_path datasets/deobfuscated --eval_file datasets/obfuscation_dataset_encode_arithmetic_eval.json --max_tokens 6144 --model_suffix _encode_arithmetic```
 6. ```python3 llvm.py --eval_file datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --obfs_data_suffix _encode_arithmetic --data_suffix _encode_arithmetic```
