@@ -13,8 +13,7 @@
 5. Evaluate the model
 6. Evaluate Clang
 7. Evaluate correctness and compute the metrics
-8. Evaluate Clang
-9. Show the evaluation
+8. Show the evaluation
 
 #### Example:
 1. ```cd single_transformations/train; python3 create_training_data_single.py --tokenizer deepseek-ai/deepseek-coder-6.7b-instruct --max_tokens 6144 --number_of_samples 3000```
