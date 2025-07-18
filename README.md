@@ -11,9 +11,10 @@
 3. Copy and switch to the eval directory
 4. Create the evaluation dataset
 5. Evaluate the model
-6. Evaluate Clang
-7. Evaluate correctness and compute the metrics
-8. Show the evaluation
+6. Build the eval files based on the LLM output
+7. Evaluate Clang
+8. Evaluate correctness and compute the metrics
+9. Show the evaluation
 
 #### Example:
 1. ```cd single_transformations/train; python3 create_training_data_single.py --tokenizer deepseek-ai/deepseek-coder-6.7b-instruct --max_tokens 6144 --number_of_samples 3000```
@@ -21,9 +22,10 @@
 3. ```mkdir ../eval/models ../eval/datasets; cp -r models/deepseek-coder-instruct-7b-encode_arithmetic ../eval/models/deepseek-coder-instruct-7b-encode_arithmetic; cd ../eval # It is important to set two different directories for training and eval data to prevent source files from being overwritten!```
 4. ```python3 create_eval_data_single.py --tokenizer deepseek-ai/deepseek-coder-6.7b-instruct --max_tokens 6144 --number_of_samples 200```
 5. ```python3 llm.py --model_type deepseek-coder-instruct --eval_model models/deepseek-coder-instruct-7b-encode_arithmetic/ --eval_out_path datasets/deobfuscated --eval_file datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --max_tokens 6144 --data_suffix _encode_arithmetic```
-6. ```python3 llvm.py --eval_file datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --obfs_data_suffix _encode_arithmetic --data_suffix _encode_arithmetic```
-7. ```python3 eval_deobf.py --eval_dataset_path datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --original_path datasets/original --obfuscated_path datasets/obfuscated --deobfuscated_path datasets/deobfuscated_encode_arithmetic --data_suffix encode_arithmetic --io_path datasets/input_samples```
-8. ```python3 show_eval.py --eval_dataset_path datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --data_suffix _encode_arithmetic --original_path datasets/original --obfuscated_path datasets/obfuscated --deobfuscated_path datasets/deobfuscated```
+6. ```python3 llm.py --model_type deepseek-coder-instruct --eval_model models/deepseek-coder-instruct-7b-encode_arithmetic/ --eval_out_path datasets/deobfuscated --eval_file datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --max_tokens 6144 --obfs_data_suffix _encode_arithmetic --data_suffix _encode_arithmetic --build_eval_files 1```
+7. ```python3 llvm.py --eval_file datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --obfs_data_suffix _encode_arithmetic --data_suffix _encode_arithmetic```
+8. ```python3 eval_deobf.py --eval_dataset_path datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --original_path datasets/original --obfuscated_path datasets/obfuscated --deobfuscated_path datasets/deobfuscated_encode_arithmetic --data_suffix encode_arithmetic --io_path datasets/input_samples```
+9. ```python3 show_eval.py --eval_dataset_path datasets/obfuscation_dataset_encode_arithmetic_6144_eval.json --data_suffix _encode_arithmetic --original_path datasets/original --obfuscated_path datasets/obfuscated --deobfuscated_path datasets/deobfuscated```
 
 ### Chained Transformations
 
@@ -32,7 +34,7 @@
 3. Copy and switch to the eval directory
 4. Create the evaluation dataset
 5. Evaluate the model
-6. Build the evaluation files around the LLM generated samples
+6. Build the evaluation files around the LLM-generated samples
 7. Evaluate clang
 8. Evaluate correctness and compute the metrics
 9. Show the evaluation
