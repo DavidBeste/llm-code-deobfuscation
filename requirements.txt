@@ -1,0 +1,12 @@
+clang==14.0
+jsondiff==2.1.1
+llvmlite==0.41.1
+numpy==1.21.5
+openai==1.97.0
+peft==0.6.0
+peft==0.4.0.dev0
+pycparser==2.19
+tiktoken==0.4.0
+torch==2.4.1
+transformers==4.46.0.dev0
+transformers==4.43.1
