@@ -74,8 +74,8 @@ def calc_all_metrics(original, obfuscated, deobfuscated, obfs_data_suffix, data_
 
 
 
-#           calc_metrics(original_files, original, ".c", False)
-#        calc_metrics(obfuscated_files, obfuscated, ".c", False)
+        calc_metrics(original_files, original, ".c", False)
+        calc_metrics(obfuscated_files, obfuscated, ".c", False)
         calc_metrics(deobfuscated_files, deobfuscated, ".c", False)
 
 
@@ -103,10 +103,10 @@ def main():
     if not args.no_metrics:
         calc_all_metrics(f"{args.original_path}_eval", f"{args.obfuscated_path}_eval", f"{args.deobfuscated_path}_eval", args.obfs_data_suffix, args.data_suffix)
 
-#    for function_name in function_names:
-#        run_semantical_tests(f"{args.original_path}_io_test", args.io_path, function_name, "")
-#        run_semantical_tests(f"{args.obfuscated_path}_io_test", args.io_path, function_name, args.obfs_data_suffix)
-#        run_semantical_tests(f"{args.deobfuscated_path}_io_test", args.io_path, function_name, args.data_suffix)
+    for function_name in function_names:
+        run_semantical_tests(f"{args.original_path}_io_test", args.io_path, function_name, "")
+        run_semantical_tests(f"{args.obfuscated_path}_io_test", args.io_path, function_name, args.obfs_data_suffix)
+        run_semantical_tests(f"{args.deobfuscated_path}_io_test", args.io_path, function_name, args.data_suffix)
 
 if __name__ == "__main__":
     main()
